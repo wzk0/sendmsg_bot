@@ -13,7 +13,9 @@
 
 ![如图所示](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/202210182316712.png)
 只需在图片中的位置编辑参数即可,
-使用bot可向bot发送/help指令.
+其次需要确保有`requests`模块,可通过`pip3 install requests`安装,
+最后请`python3 main.py`
+使用bot指南可向bot发送`/help`指令.
 
 ## 工作流程呢?
 
