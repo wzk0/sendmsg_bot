@@ -17,7 +17,7 @@
 
 ## 工作流程呢?
 
-通过写入.temp文件判断更新,通过写入.offset文件获取更新,通过创建.data文件夹保留用户id信息,id为子文件夹,内有last_time(最近的更新时间)和point(积分),都是明文储存.
+通过写入`.temp`文件判断更新,通过写入`.offset`文件获取更新,通过创建`.data`文件夹保留用户id信息,id为子文件夹,内有`last_time`(最近的更新时间)和`point`(积分)文件,都是明文储存,同时追加写入的方式保存所有消息到`.log`
 ![结构](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/202210182319431.png)
 
 ## 开发相关呢?
