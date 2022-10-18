@@ -6,8 +6,8 @@ import random
 
 master=['1855411421'] ##此处填写主人的ID,是python列表格式,不知道如何填写的话请看: https://www.runoob.com/python3/python3-tutorial.html
 token='' ##此处填写机器人的Token,单引号不能删
-ckn_up=30 ##此处填写签到时获得的随机积分的下限
-ckn_down=20 ##此处填写上限
+ckn_up=30 ##此处填写签到时获得的随机积分的上限
+ckn_down=20 ##此处填写下限
 
 def send_msg(user_id,text):
 	global token
