@@ -6,6 +6,7 @@ import random
 
 master=['1855411421'] ##此处填写主人的ID,是python列表格式,不知道如何填写的话请看: https://www.runoob.com/python3/python3-tutorial.html
 token='' ##此处填写机器人的Token,单引号不能删
+board='https://raw.githubusercontent.com/wzk0/sendmsg_bot/main/board' ##此处填写/help指令时获取内容的url
 ckn_up=30 ##此处填写签到时获得的随机积分的上限
 ckn_down=20 ##此处填写下限
 
@@ -142,7 +143,9 @@ def command(cmd,user_id):
 	if '/chat' in cmd:
 		cht(user_id)
 	if '/help' in cmd:
-		send_msg(user_id,'✨以下是帮助!\n除了 /admin 和 /give 指令外,其他指令直接发送即可;\n/admin 用法: /admin 你要说的话 积分下限\n该指令发送后,将发送你要说的话给所有积分高于积分下限的用户;\n/give 用法: /give 用户ID 积分数\n该指令发送后,将给予用户指定积分;\n当你的机器人用户变多时,请不要轻易使用 /admin 指令,以免让人烦😰;\n还有就是我会说话,除了指令外的任意一句话都会触发我跟你的聊天🥰;\n但是我不会一直在线,因为我的主人没有服务器🌚.')
+		global board
+		r=requests.get(board)
+		send_msg(user_id,r.text)
 	if '/start' in cmd:
 		send_msg(user_id,'感谢使用🥳🎉!')
 	if '/log' in cmd:
@@ -181,7 +184,7 @@ def command(cmd,user_id):
 				text.append(d+' - '+dic[d])
 			send_msg(user_id,'💯用户ID和对应积分的列表如下:\n%s'%'\n'.join(text))
 	
-	elif cmd not in ['/register','/checkin','/info','/admin','/chat','/help','/show','/start']:
+	elif cmd not in ['/log','/register','/checkin','/info','/admin','/chat','/help','/show','/start']:
 		errorls=['/admin','/give']
 		if errorls[0] in cmd.split(' ')[0] or errorls[1] in cmd.split(' ')[0]:
 			pass
@@ -233,15 +236,15 @@ def begin(token):
 			pass
 		else:
 			if 'text' not in file_type:
-				print(time+' - '+user_id+' - '+user_name+' - '+'这是一个%s消息!'%file_type[-1])
+				print(time+' - '+user_id+' - @'+user_name+' - '+'这是一个%s消息!'%file_type[-1])
 				with open('.log','a')as f:
-					f.write(time+' - '+user_id+' - '+user_name+' - '+'这是一个%s消息!'%file_type[-1]+'\n')
+					f.write(time+' - '+user_id+' - @'+user_name+' - '+'这是一个%s消息!'%file_type[-1]+'\n')
 				send_msg(user_id,'怎么了,给我发这个%s,想和我聊天嘛?'%file_type[-1])
 			else:
 				command(msg['text'],user_id)
 				with open('.log','a')as f:
-					f.write(time+' - '+user_id+' - '+user_name+' - '+msg['text']+'\n')
-				print(time+' - '+user_id+' - '+user_name+' - '+msg['text'])
+					f.write(time+' - '+user_id+' - @'+user_name+' - '+msg['text']+'\n')
+				print(time+' - '+user_id+' - @'+user_name+' - '+msg['text'])
 	except:
 		ttttt.sleep(3)
 
