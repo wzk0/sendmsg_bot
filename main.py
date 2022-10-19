@@ -13,7 +13,7 @@ ckn_down=20 ##此处填写下限
 def send_msg(user_id,text):
 	global token
 	url='https://api.telegram.org/bot%s/'%token
-	params={'chat_id':user_id,'text':text}
+	params={'chat_id':user_id,'text':text,'parse_mode':'markdown'}
 	r=requests.post(url+'sendMessage',params=params)
 
 def tree(user_id):
