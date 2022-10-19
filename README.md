@@ -12,10 +12,19 @@
 ## 如何使用呢?
 
 ![如图所示](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/202210182316712.png)
+首先应当在 https://t.me/BotFather 处新建一个bot并复制`API Token`.
+然后clone此仓库:
+```
+git clone https://github.com/wzk0/sendmsg_bot && cd sendmsg_bot
+```
+接着编辑`main.py`:
 只需在图片中的位置编辑参数即可,
 其次需要确保有`requests`模块,可通过`pip3 install requests`安装,
 最后请`python3 main.py`
 使用bot指南可向bot发送`/help`指令.
+
+或者你也可以`fork`此仓库,在线修改参数后,使用`Railway`免费部署! >> https://railway.app
+官方说会ban机器人,但是我只用了`requests`库,算不上是bot吧?
 
 ## 工作流程呢?
 
