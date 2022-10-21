@@ -154,6 +154,13 @@ def command(cmd,user_id):
 		else:
 			with open('.log','r')as f:
 				send_msg(user_id,f.read())
+	if '/clear' in cmd:
+		if is_master(user_id)!=True:
+			send_msg(user_id,'❌不是主人!')
+		else:
+			with open('.log','w')as f:
+				f.write('')
+			send_msg(user_id,'🎉清理完成!')
 	if '/give' in cmd:
 		if '/give'==cmd:
 			send_msg(user_id,'❌用法错误!')
@@ -184,7 +191,7 @@ def command(cmd,user_id):
 				text.append(d+' - '+dic[d])
 			send_msg(user_id,'💯用户ID和对应积分的列表如下:\n%s'%'\n'.join(text))
 	
-	elif cmd not in ['/log','/register','/checkin','/info','/admin','/chat','/help','/show','/start']:
+	elif cmd not in ['/clear','/log','/register','/checkin','/info','/admin','/chat','/help','/show','/start']:
 		errorls=['/admin','/give']
 		if errorls[0] in cmd.split(' ')[0] or errorls[1] in cmd.split(' ')[0]:
 			pass
